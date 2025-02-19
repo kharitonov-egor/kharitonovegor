@@ -25,26 +25,26 @@ export default function Tutoring () {
 
             <p className="mb-5">Text me: {phoneNumber}</p>
 
-            <p className="mb-5 font-semibold">Reviews about me:</p>
+            <p className="mb-5 font-semibold text-lg">Reviews about me:</p>
 
             <div className="flex flex-col gap-[20px]">
                 <div className="flex flex-row text-sm gap-4">
                     <div className="bg-zinc-800 p-4 rounded-2xl">
-                        <h2 className="mb-4 font-semibold text-base">William</h2>
+                        <h2 className="mb-4 font-semibold text-lg">William</h2>
                         <p>To be written</p>
                     </div>
                     <div className="bg-zinc-800 p-4 rounded-2xl">
-                        <h2 className="mb-4 font-semibold text-base">Jane</h2>
+                        <h2 className="mb-4 font-semibold text-lg">Jane</h2>
                         <p>To be written</p>
                     </div>
                 </div>
                 <div className="flex flex-row text-sm gap-4">
                     <div className="bg-zinc-800 p-4 rounded-2xl">
-                        <h2 className="mb-4 font-semibold text-base">Artem</h2>
+                        <h2 className="mb-4 font-semibold text-lg">Artem</h2>
                         <p>To be written</p>
                     </div>
                     <div className="bg-zinc-800 p-4 rounded-2xl">
-                        <h2 className="mb-4 font-semibold text-base">Katie</h2>
+                        <h2 className="mb-4 font-semibold text-lg">Katie</h2>
                         <p>To be written</p>
                     </div>
                 </div>
