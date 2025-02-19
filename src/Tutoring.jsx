@@ -1,7 +1,10 @@
 import Card from "./Card.jsx";
 import React from 'react';
 
+import phoneNumber from './phoneNumber.js';
+
 import usf from './assets/usf.png'
+import info from './assets/info.png'
 
 export default function Tutoring () {
     return (
@@ -20,27 +23,29 @@ export default function Tutoring () {
                 <li>I create custom worksheets, homework assignments, and formula sheets designed to reinforce learning and address student's needs.</li>
             </ul>
 
+            <p className="mb-5">Text me: {phoneNumber}</p>
+
             <p className="mb-5 font-semibold">Reviews about me:</p>
 
             <div className="flex flex-col gap-[20px]">
                 <div className="flex flex-row text-sm gap-4">
                     <div className="bg-zinc-800 p-4 rounded-2xl">
                         <h2 className="mb-4 font-semibold text-base">William</h2>
-                        <p>...</p>
+                        <p>To be written</p>
                     </div>
                     <div className="bg-zinc-800 p-4 rounded-2xl">
                         <h2 className="mb-4 font-semibold text-base">Jane</h2>
-                        <p>...</p>
+                        <p>To be written</p>
                     </div>
                 </div>
                 <div className="flex flex-row text-sm gap-4">
                     <div className="bg-zinc-800 p-4 rounded-2xl">
                         <h2 className="mb-4 font-semibold text-base">Artem</h2>
-                        <p>...</p>
+                        <p>To be written</p>
                     </div>
                     <div className="bg-zinc-800 p-4 rounded-2xl">
                         <h2 className="mb-4 font-semibold text-base">Katie</h2>
-                        <p>...</p>
+                        <p>To be written</p>
                     </div>
                 </div>
 
