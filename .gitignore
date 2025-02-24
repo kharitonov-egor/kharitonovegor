@@ -24,3 +24,8 @@ dist-ssr
 *.sw?
 
 src/phoneNumber.js
+
+package-lock.json
+.firebase
+.firebase/
+.firebaserc
