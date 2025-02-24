@@ -39,22 +39,8 @@ function App() {
           <RouterProvider router={router}></RouterProvider>
 
 
-          {/*
-          <div className="grid grid-cols-4 gap-0 mt-[20px] social-icons-container">
-              <a href="https://github.com/kharitonov-egor" target="_blank">
-                  <img src={github} alt="github logo"/>
-              </a>
-              <a href="https://www.linkedin.com/in/kharitonov-egor/" target="_blank">
-                  <img src={linkedin} alt="linkedin logo"/>
-              </a>
-              <a href="mailto:ekharitonov@hawkmail.hccfl.edu" target="_blank">
-                  <img src={email} alt="email logo"/>
-              </a>
-              <a href="https://t.me/kharitonov_egor" target="_blank">
-                  <img src={tg} alt="telegram logo"/>
-              </a>
-          </div>
-          */}
+
+
 
       </div>
   )
