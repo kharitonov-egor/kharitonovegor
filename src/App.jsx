@@ -12,11 +12,13 @@ import Home from './Home.jsx'
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Tutoring from "./Tutoring.jsx";
+import Timer from "./Timer.jsx";
 
 
 const router = createBrowserRouter([
     { path: '/', element: <Home /> },
-    { path: '/tutoring', element: <Tutoring /> }
+    { path: '/tutoring', element: <Tutoring /> },
+    { path: '/timer', element: <Timer /> }
 ]);
 
 

@@ -3,7 +3,7 @@ import React from 'react';
 
 import phoneNumber from './phoneNumber.js';
 
-import usf from './assets/usf.png'
+import usf from './usf.png'
 import info from './assets/info.png'
 
 export default function Tutoring () {
