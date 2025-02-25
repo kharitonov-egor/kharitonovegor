@@ -23,7 +23,7 @@ export default function Timer () {
 
 
             <Countdown
-                className="text-3xl font-semibold" date='2025-05-07T00:00:01'
+                className="text-5xl font-semibold" date='2025-05-07T00:00:01'
             />
 
         </div>
