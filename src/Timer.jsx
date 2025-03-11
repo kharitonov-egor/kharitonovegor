@@ -1,32 +1,41 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Countdown from 'react-countdown';
 
-// Random component
-const Completionist = () => <span>You are good to go!</span>;
+import { useState, useEffect } from 'react';
 
-// Renderer callback with condition
-const renderer = ({ hours, minutes, seconds, completed }) => {
-    if (completed) {
-        // Render a completed state
-        return <Completionist />;
-    } else {
-        // Render a countdown
-        return <span>{hours}:{minutes}:{seconds}</span>;
-    }
-};
 
-export default function Timer () {
+
+export default function Timer (props) {
+
+    const [data, setData] = useState(null);
+
+    useEffect(() => {
+        fetch('https://www.affirmations.dev')
+            .then(response => response.json())
+            .then(json => setData(json))
+            .catch(error => console.error(error));
+    }, [])
+
+    console.log(data)
+
     return (
-        <div className="content-center items-center place-content-center text-center">
-            <h1 className="text-2xl mb-10">Time till Spring 2025 semester ends:</h1>
+        <>
+
+            <div className="content-center items-center place-content-center text-center">
+                <h1 className="text-2xl mb-10">{props.text}</h1>
+
+                <Countdown
+                    className="text-5xl font-semibold" date={props.date}
+                />
+
+            </div>
+
+            <div>
+                {data ? <h1>{data.slip.advice}</h1> : 'Loading...'}
+            </div>
+
+        </>
 
 
-            <Countdown
-                className="text-5xl font-semibold" date='2025-05-07T00:00:01'
-            />
-
-        </div>
-
-            )
-            }
+    )
+}

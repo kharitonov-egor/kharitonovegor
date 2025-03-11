@@ -13,19 +13,13 @@ import Home from './Home.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Tutoring from "./Tutoring.jsx";
 import Timer from "./Timer.jsx";
-
-
-const router = createBrowserRouter([
-    { path: '/', element: <Home /> },
-    { path: '/tutoring', element: <Tutoring /> },
-    { path: '/timer', element: <Timer /> }
-]);
-
-
+import Router from "./Router.jsx";
 
 function App() {
   return (
+
       <div>
+          {/*
 
           <div className="bg-black sm:w-[600px] h-[60px] flex items-center gap-5 px-5 rounded-2xl bg-zinc-800 shadow-lg text-inherit align-top mb-5">
 
@@ -35,10 +29,10 @@ function App() {
 
           </div>
 
+           */}
 
 
-
-          <RouterProvider router={router}></RouterProvider>
+          <RouterProvider router={Router} />
 
 
 
