@@ -10,13 +10,11 @@ export default function Timer (props) {
     const [data, setData] = useState(null);
 
     useEffect(() => {
-        fetch('https://www.affirmations.dev')
+        fetch('https://api.allorigins.win/get?url=' + encodeURIComponent('https://www.affirmations.dev'))
             .then(response => response.json())
-            .then(json => setData(json))
-            .catch(error => console.error(error));
-    }, [])
-
-    console.log(data)
+            .then(result => setData(JSON.parse(result.contents)))
+            .catch(error => console.error('Fetch Error:', error));
+    }, []);
 
     return (
         <>
@@ -27,12 +25,13 @@ export default function Timer (props) {
                 <Countdown
                     className="text-5xl font-semibold" date={props.date}
                 />
+                <div className="mt-10">
+                    {data ? <p>{data.affirmation}</p> : <p>Loading...</p>}
+                </div>
+
 
             </div>
 
-            <div>
-                {data ? <h1>{data.slip.advice}</h1> : 'Loading...'}
-            </div>
 
         </>
 
