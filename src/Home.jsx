@@ -13,7 +13,7 @@ export default function Home () {
         <div className="grid justify-items-center">
 
 
-            <Card text="Computer science student and math tutor" className="w-max m-auto"/>
+            <Card text="Software Engineer & Computer Science student" className="w-max m-auto"/>
 
             <div>
 
@@ -24,7 +24,7 @@ export default function Home () {
                     <a href="https://www.linkedin.com/in/kharitonov-egor/" target="_blank">
                         <img src={linkedin} alt="linkedin logo"/>
                     </a>
-                    <a href="mailto:ekharitonov@hawkmail.hccfl.edu" target="_blank">
+                    <a href="mailto:egakhar@gmail.com" target="_blank">
                         <img src={email} alt="email logo"/>
                     </a>
                     <a href="https://t.me/kharitonov_egor" target="_blank">
