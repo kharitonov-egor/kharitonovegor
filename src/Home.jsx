@@ -1,7 +1,4 @@
-import me from './assets/me.jpg'
-
 import Card from './Card.jsx'
-import React from 'react';
 import github from "./assets/github.png";
 import linkedin from "./assets/linkedin.png";
 import email from "./assets/email.png";
