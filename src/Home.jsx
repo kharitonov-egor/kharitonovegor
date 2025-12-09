@@ -1,20 +1,31 @@
-import Card from './Card.jsx'
 import github from "./assets/github.png";
 import linkedin from "./assets/linkedin.png";
 import email from "./assets/email.png";
 import tg from "./assets/tg.png";
+import me from "./assets/me.png";
 
 
 export default function Home () {
     return (
         <div className="grid justify-items-center">
 
+            <div className="grid justify-items-center gap-3">
 
-            <Card text="Software Engineer & Computer Science student" className="w-max m-auto"/>
+                    <img className="w-[150px] rounded-3xl shadow-md border-2 border-white" src={me} alt="photo of me"/>
+
+                    <div className="grid justify-items-center text-center ">
+
+                        <h1 className="text-3xl font-semibold text-white sm:text-4xl sm:font-bold mb-2">Egor Kharitonov</h1>
+                        <h2 className="text-xl sm:text-xl">Software Engineer & Computer Science student</h2>
+
+                    </div>
+            </div>
+
+
 
             <div>
 
-                <div className="flex flex-row gap-4 mt-[20px] social-icons-container">
+                <div className="flex flex-row gap-5 mt-[20px] social-icons-container">
                     <a href="https://github.com/kharitonov-egor" target="_blank">
                         <img src={github} alt="github logo"/>
                     </a>

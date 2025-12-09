@@ -1,13 +1,12 @@
 import './App.css'
 
-import {RouterProvider } from 'react-router-dom'
-
-import Router from "./Router.jsx";
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
+import Home from './Home.jsx'
 
 function App() {
   return (
       <div>
-          <RouterProvider router={Router} />
+          <Home />
       </div>
   )
 }
