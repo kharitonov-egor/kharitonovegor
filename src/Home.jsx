@@ -7,7 +7,7 @@ import me from "./assets/me.png";
 
 export default function Home () {
     return (
-        <div className="grid justify-items-center">
+        <div className="flex flex-col items-center justify-center h-full w-full">
 
             <div className="grid justify-items-center gap-3">
 
