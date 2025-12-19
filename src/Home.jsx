@@ -26,16 +26,16 @@ export default function Home () {
             <div>
 
                 <div className="flex flex-row gap-5 mt-[20px] social-icons-container">
-                    <a href="https://github.com/kharitonov-egor" target="_blank">
+                    <a href="https://github.com/kharitonov-egor" target="_blank" id="GithubClick">
                         <img src={github} alt="github logo"/>
                     </a>
-                    <a href="https://www.linkedin.com/in/kharitonov-egor/" target="_blank">
+                    <a href="https://www.linkedin.com/in/kharitonov-egor/" target="_blank" id="LinkedinClick">
                         <img src={linkedin} alt="linkedin logo"/>
                     </a>
-                    <a href="mailto:egakhar@gmail.com" target="_blank">
+                    <a href="mailto:egakhar@gmail.com" target="_blank" id="EmailClick">
                         <img src={email} alt="email logo"/>
                     </a>
-                    <a href="https://t.me/kharitonov_egor" target="_blank">
+                    <a href="https://t.me/kharitonov_egor" target="_blank" id="TelegramClick">
                         <img src={tg} alt="telegram logo"/>
                     </a>
                 </div>
