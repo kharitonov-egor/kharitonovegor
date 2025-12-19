@@ -34,3 +34,5 @@ src/Router.jsx
 phoneNumber.js
 /.firebase/
 /firebase.json
+
+.env
