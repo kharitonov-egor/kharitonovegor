@@ -1,6 +1,5 @@
 #root {
-  width: 37.5em;
-  height: 100%;
+  width: min(37.5em, 100%);
   margin-left: auto;
   margin-right: auto;
 
