@@ -3,7 +3,7 @@ import { leadership } from './data/Leadership'
 
 export default function Home() {
   return (
-    <div className="flex min-h-full max-w-[750px] flex-col justify-center mt-8">
+    <div className="flex min-h-full max-w-[800px] flex-col justify-center mt-8">
       <div className="grid gap-3">
 
         <div className="grid">
@@ -54,7 +54,7 @@ export default function Home() {
             <h2 className='text-sm text-gray-500 mb-5'>{item.organization}</h2>
 
             {item.descriptions.map((description) => (
-              <p className='text-sm text-gray-500'>{description}</p>
+              <p className='text-sm text-gray-500 mb-2' dangerouslySetInnerHTML={{ __html: description }} />
             ))}
           </div>
         ))}
@@ -78,9 +78,9 @@ export default function Home() {
             </div>
 
             <h2 className="text-sm text-gray-500 mb-5">{item.organization}</h2>
-
+            
             {item.descriptions.map((description) => (
-              <p className="text-sm text-gray-500">{description}</p>
+              <p className="text-sm text-gray-500 mb-2" dangerouslySetInnerHTML={{ __html: description }} />
             ))}
           </div>
         ))}
