@@ -37,6 +37,16 @@ a {
   color: #7fb2f4;
 }
 
+::selection {
+  background: #334155;
+  color: #e2e8f0;
+}
+
+::-moz-selection {
+  background: #334155;
+  color: #e2e8f0;
+}
+
 body {
   margin: 0;
   display: flex;
