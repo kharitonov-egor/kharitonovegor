@@ -1,7 +1,10 @@
+import ssLogo from '../assets/logos/ss_2.jpg'
+
 export type Experience = {
   title: string
   date: string
   organization: string
+  logo: string
   descriptions: string[]
 }
 
@@ -9,7 +12,8 @@ export const experience: Experience[] = [
   {
     title: 'Software Engineer',
     date: 'March 2025 - Present',
-    organization: '<a href="https://stableinsolutions.com" target="_blank" rel="noopener noreferrer">Stablein Solutions</a>',
+    organization: 'Stablein Solutions',
+    logo: ssLogo,
     descriptions: [
       '• Built an AI-powered order ingestion pipeline to process <strong>2,000+</strong> daily purchase orders, reducing processing time from hours to minutes.',
       '• Expanded the ingestion pipeline from PDF-only processing to support XML files and email-submitted purchase orders, increasing supported input types by <strong>40%</strong>.',
