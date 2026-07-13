@@ -1,6 +1,7 @@
 import { useState } from 'react'
-import { experience } from './data/Experience'
-import { leadership } from './data/Leadership'
+// import { experience } from './data/Experience'
+// import { leadership } from './data/Leadership'
+import me from './assets/me.png'
 
 type Item = {
   title: string
@@ -77,21 +78,27 @@ function Row({ item }: { item: Item }) {
 
 export default function Home() {
   return (
-    <div className="flex min-h-full w-full flex-col mt-8">
-      <div className="grid gap-3">
+    <div className="flex min-h-full w-full flex-col items-center mt-16">
+      <div className="grid justify-items-center gap-5 text-center">
 
-        <div className="grid">
-          <h1 className="text-2xl font-semibold text-white mb-2">
+        <img
+          src={me}
+          alt="Egor Kharitonov"
+          className="w-[150px] rounded-3xl border-2 border-white/80 shadow-md mb-2"
+        />
+
+        <div className="grid gap-2">
+          <h1 className="text-3xl font-bold text-white">
             Egor Kharitonov
           </h1>
-          <h2 className="text-sm text-gray-500">
-            Software Engineer @ Stablein Solutions | Vice President @ IEEE CS USF | CS & Math @ University of South Florida
+          <h2 className="text-base text-gray-500">
+            Software Engineer
           </h2>
         </div>
       </div>
 
       <div>
-        <div className="flex flex-row gap-7 mt-[20px] social-icons-container">
+        <div className="flex flex-row gap-8 mt-8 text-lg social-icons-container">
           <a href="https://github.com/kharitonov-egor" target="_blank" id="GithubClick" className='hover:underline'>
             Github
           </a>
@@ -112,16 +119,16 @@ export default function Home() {
         </div>
       </div>
 
-      <hr className="h-px my-5 bg-gray-800 border-0" />
+      {/* <hr className="h-px my-5 bg-gray-800 border-0" />
 
       <div className='flex flex-col gap-0'>
         <h2 className='text-sm text-gray-500 font-mono font-semibold mb-8 tracking-widest'>Experience</h2>
         {experience.map((item, i) => (
           <Row key={i} item={item} />
         ))}
-      </div>
+      </div> */}
 
-      <hr className="h-px my-5 bg-gray-800 border-0" />
+      {/* <hr className="h-px my-5 bg-gray-800 border-0" />
 
       <div className="flex flex-col gap-0">
         <h2 className="text-sm text-gray-500 font-mono font-semibold mb-8 tracking-widest">Leadership</h2>
@@ -130,7 +137,7 @@ export default function Home() {
             <Row key={i} item={item} />
           ))}
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }
