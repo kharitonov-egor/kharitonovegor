@@ -1,0 +1,560 @@
+:root {
+  --frame-line: #202020;
+  --frame-strong: #383838;
+  --surface: #070707;
+  --surface-2: #121212;
+  --ink: #fafafa;
+  --r: 14px;
+  --r-sm: 10px;
+  --dur-1: 120ms;
+  --dur-2: 200ms;
+  --dur-3: 320ms;
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.coord {
+  font-family: 'Geist Mono', ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.03em;
+}
+
+.binary-gutter {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 100vw;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+  --dot: rgba(255, 255, 255, 0.105);
+  --dot-bright: rgba(255, 255, 255, 0.44);
+  --slash: rgba(255, 255, 255, 0.03);
+  background-color: #040404;
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.55) 0%,
+      rgba(0, 0, 0, 0.08) 24%,
+      rgba(0, 0, 0, 0.08) 76%,
+      rgba(0, 0, 0, 0.55) 100%
+    ),
+    repeating-linear-gradient(-45deg, var(--slash) 0 1px, transparent 1px 22px),
+    radial-gradient(var(--dot) 1.1px, transparent 1.2px);
+  background-size: auto, auto, 18px 18px;
+  background-position: center, 0 0, center;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 12%, #000 88%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, #000 12%, #000 88%, transparent);
+}
+
+.binary-gutter--left {
+  left: 0;
+  background-position: center, 0 0, center;
+}
+
+.binary-gutter--right {
+  display: none;
+}
+
+.binary-gutter::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(var(--dot-bright) 1.4px, transparent 1.5px);
+  background-size: 18px 18px;
+  background-position: center;
+  -webkit-mask-image: radial-gradient(circle 150px at var(--gx, -9999px) var(--gy, -9999px), #000 0%, transparent 72%);
+  mask-image: radial-gradient(circle 150px at var(--gx, -9999px) var(--gy, -9999px), #000 0%, transparent 72%);
+}
+
+.binary-gutter--left::after {
+  --gx: calc(var(--mx, -9999) * 1px);
+  --gy: calc(var(--my, -9999) * 1px);
+}
+
+@media (max-width: 960px) {
+  .binary-gutter {
+    display: none;
+  }
+}
+
+.site-frame {
+  position: relative;
+  z-index: 1;
+  max-width: 68rem;
+  margin-inline: auto;
+  border-inline: 1px solid var(--frame-line);
+  background: var(--surface);
+}
+
+.box {
+  border-top: 1px solid var(--frame-line);
+  padding: 2.75rem 1.65rem;
+}
+
+.box:first-child {
+  border-top: 0;
+}
+
+.cell {
+  border: 1px solid var(--frame-line);
+  background: var(--surface);
+  border-radius: var(--r);
+}
+
+.soft-media,
+.soft-media img {
+  border-radius: var(--r) !important;
+}
+
+.tl {
+  position: relative;
+  display: grid;
+  gap: 1.25rem;
+}
+
+.tl::before {
+  content: '';
+  position: absolute;
+  left: 10px;
+  top: 12px;
+  bottom: 12px;
+  width: 2px;
+  background: var(--frame-line);
+}
+
+@supports (animation-timeline: view()) {
+  .tl::after {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 12px;
+    width: 2px;
+    height: calc(100% - 24px);
+    background: var(--frame-strong);
+    transform-origin: top;
+    transform: scaleY(0);
+    animation: tl-draw linear both;
+    animation-timeline: view();
+    animation-range: cover 8% cover 68%;
+  }
+
+  @keyframes tl-draw {
+    to {
+      transform: scaleY(1);
+    }
+  }
+}
+
+.tl-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  gap: 0.9rem;
+  align-items: start;
+}
+
+.tl-marker {
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+}
+
+.tl-dot {
+  position: relative;
+  z-index: 1;
+  width: 11px;
+  height: 11px;
+  border-radius: 9999px;
+  background: var(--surface);
+  border: 2px solid var(--frame-strong);
+}
+
+.tl-dot--live {
+  background: currentColor;
+  border-color: currentColor;
+}
+
+.tl-dot--live::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 9999px;
+  border: 2px solid currentColor;
+  animation: tl-ping 2.2s ease-out infinite;
+}
+
+@keyframes tl-ping {
+  0% {
+    transform: scale(0.55);
+    opacity: 0.55;
+  }
+  100% {
+    transform: scale(1.9);
+    opacity: 0;
+  }
+}
+
+.boxy-hover {
+  transition:
+    background-color var(--dur-2) var(--ease-out-quint),
+    border-color var(--dur-2) var(--ease-out-quint);
+}
+
+.boxy-hover:hover {
+  background: var(--surface-2);
+  border-color: var(--frame-strong);
+}
+
+.shipped-card,
+.shipped-card:hover {
+  text-decoration: none;
+}
+
+.ilink {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: #525252;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+  transition: text-decoration-color var(--dur-2) var(--ease-out-quart);
+}
+
+.ilink:hover {
+  color: #fff;
+  text-decoration-color: currentColor;
+}
+
+.ilink::after {
+  content: none;
+}
+
+.ilink:hover::after {
+  content: none;
+}
+
+.language-chip {
+  border: 1px solid var(--frame-line);
+  border-radius: 999px;
+  padding: 0.4rem 0.75rem;
+  color: #d4d4d4;
+  font-size: 0.82rem;
+}
+
+.callout {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  border: 1px solid var(--frame-line);
+  border-radius: var(--r);
+  padding: 0.72rem 0.9rem;
+  color: #a3a3a3;
+  font-size: 0.86rem;
+}
+
+.callout > span:first-child {
+  color: #f5f5f5;
+  font-size: 1.1rem;
+}
+
+.github-graph {
+  padding: 1.35rem;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.018), transparent 45%),
+    #0b0b0b;
+}
+
+.github-graph__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.github-graph__identity {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.github-graph__identity svg {
+  width: 1.45rem;
+  height: 1.45rem;
+  flex: none;
+  color: #d4d4d4;
+}
+
+.github-graph__eyebrow {
+  color: #737373;
+  font: 0.68rem/1.2 'Geist Mono', ui-monospace, monospace;
+  letter-spacing: 0.04em;
+}
+
+.github-graph__username {
+  margin-top: 0.18rem;
+  color: #e5e5e5;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.graph-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  flex: none;
+  color: #a3a3a3;
+  font-size: 0.78rem;
+  text-decoration: none;
+  transition: color var(--dur-2) var(--ease-out-quint);
+}
+
+.graph-link:hover {
+  color: #f5f5f5;
+  text-decoration: none;
+}
+
+.github-graph__calendar {
+  display: grid;
+  grid-template-columns: 1.8rem minmax(0, 1fr);
+  gap: 0.55rem;
+  overflow-x: auto;
+  margin-top: 1.5rem;
+  scrollbar-width: thin;
+  scrollbar-color: #404040 transparent;
+}
+
+.github-graph__calendar.is-loading {
+  opacity: 0.5;
+}
+
+.github-graph__weekdays {
+  display: grid;
+  grid-template-rows: 1rem repeat(7, 0.68rem);
+  gap: 0.22rem;
+  min-width: 1.8rem;
+  color: #626262;
+  font: 0.56rem/1 'Geist Mono', ui-monospace, monospace;
+}
+
+.github-graph__weekdays span:nth-child(1) { grid-row: 3; }
+.github-graph__weekdays span:nth-child(2) { grid-row: 5; }
+.github-graph__weekdays span:nth-child(3) { grid-row: 7; }
+
+.github-graph__plot {
+  min-width: 36rem;
+}
+
+.github-graph__months {
+  display: grid;
+  height: 1rem;
+  color: #737373;
+  font: 0.58rem/1 'Geist Mono', ui-monospace, monospace;
+}
+
+.github-graph__months span {
+  overflow: visible;
+  white-space: nowrap;
+}
+
+.github-graph__grid {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(7, 0.68rem);
+  gap: 0.22rem;
+  width: 100%;
+}
+
+.github-graph__cell {
+  display: block;
+  min-width: 0;
+  border: 1px solid rgba(255, 255, 255, 0.025);
+  border-radius: 2.5px;
+  background: #202322;
+  transition:
+    transform var(--dur-1) var(--ease-out-quint),
+    filter var(--dur-1) var(--ease-out-quint);
+}
+
+.github-graph__cell--1 { background: #123f32; }
+.github-graph__cell--2 { background: #176b4e; }
+.github-graph__cell--3 { background: #20a66a; }
+.github-graph__cell--4 { background: #55dda0; }
+
+.github-graph__grid .github-graph__cell[title]:hover {
+  position: relative;
+  z-index: 1;
+  transform: scale(1.35);
+  filter: brightness(1.16);
+}
+
+.github-graph__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid #202020;
+}
+
+.github-graph__summary {
+  color: #737373;
+  font: 0.62rem/1.2 'Geist Mono', ui-monospace, monospace;
+}
+
+.github-graph__legend {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex: none;
+  color: #737373;
+  font: 0.58rem/1 'Geist Mono', ui-monospace, monospace;
+}
+
+.github-graph__legend .github-graph__cell {
+  width: 0.65rem;
+  height: 0.65rem;
+}
+
+.github-graph__error {
+  display: flex;
+  min-height: 8.2rem;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1.5rem;
+  border: 1px dashed #2b2b2b;
+  border-radius: var(--r-sm);
+  color: #737373;
+  font-size: 0.78rem;
+}
+
+.github-showcase {
+  display: flex;
+  flex-direction: column;
+  gap: 1.45rem;
+}
+
+.github-showcase__heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.section-heading {
+  color: #f5f5f5;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+}
+
+.github-showcase__heading a {
+  color: #8a8a8a;
+  font: 0.78rem/1.2 'Geist Mono', ui-monospace, monospace;
+  text-decoration: none;
+  transition: color var(--dur-2) var(--ease-out-quint);
+}
+
+.github-showcase__heading a:hover {
+  color: #f5f5f5;
+  text-decoration: none;
+}
+
+.github-calendar-card {
+  overflow: hidden;
+  border: 1px solid #2a2a2a;
+  border-radius: var(--r);
+  background: #090909;
+  padding: 1.2rem;
+}
+
+.github-calendar-viewport {
+  width: 100%;
+  overflow: hidden;
+}
+
+.github-calendar-viewport .react-activity-calendar__scroll-container {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden !important;
+}
+
+.github-calendar-viewport > article {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  color: #737373;
+  font-family: 'Geist Mono', ui-monospace, monospace;
+}
+
+.github-calendar-viewport svg {
+  display: block;
+  width: calc(100% - 2.25rem);
+  max-width: calc(100% - 2.25rem);
+  height: auto;
+}
+
+.github-calendar-viewport > article > div:last-child {
+  margin-top: 1rem !important;
+}
+
+.github-calendar-viewport strong {
+  color: #f5f5f5;
+  font-weight: 700;
+}
+
+.github-calendar-viewport rect {
+  transition:
+    opacity var(--dur-1) var(--ease-out-quint),
+    transform var(--dur-1) var(--ease-out-quint);
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.github-calendar-viewport rect:hover {
+  opacity: 0.86;
+  transform: scale(1.12);
+}
+
+@media (max-width: 640px) {
+  .site-frame { max-width: 100%; }
+  .box { padding: 2.2rem 1.15rem; }
+  .callout { align-items: flex-start; }
+
+  .github-graph { padding: 1rem; }
+  .github-graph__footer { align-items: flex-start; flex-direction: column; }
+  .github-graph__weekdays { display: none; }
+  .github-graph__calendar { grid-template-columns: minmax(0, 1fr); }
+  .github-showcase__heading { align-items: flex-end; }
+  .section-heading { font-size: 1.15rem; }
+  .github-calendar-card { padding: 0.9rem; }
+}
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+button,
+summary,
+[role='button'] {
+  cursor: pointer;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tl-dot--live::after {
+    animation: none;
+    opacity: 0;
+  }
+
+  .tl::after {
+    animation: none;
+    transform: scaleY(1);
+  }
+
+  .boxy-hover {
+    transition: none;
+  }
+}

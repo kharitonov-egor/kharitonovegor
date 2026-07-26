@@ -12,16 +12,16 @@ export const leadership: Leadership[] = [
   {
     title: 'Vice President',
     date: 'May 2026 - Present',
-    organization: 'IEEE Computer Society at USF',
+    organization: 'IEEE Computer Society at the University of South Florida',
     logo: ieeeLogo,
     descriptions: [
       '• Leading TechX Florida 2026 Conference planning for a <strong>900+</strong> member chapter by coordinating sponsor outreach, speaker recruitment, conference agenda planning, and weekly chapter events.',
     ],
   },
   {
-    title: 'Technical Lead / Outreach Chair',
+    title: 'Tech Lead / Outreach Chair',
     date: 'August 2025 - May 2026',
-    organization: 'IEEE Computer Society at USF',
+    organization: 'IEEE Computer Society at the University of South Florida',
     logo: ieeeLogo,
     descriptions: [
       '• Spearheaded TechX Florida 2025, Florida\'s largest student-run AI conference, drawing <strong>336</strong> attendees and <strong>450+</strong> registrations from <strong>14+</strong> universities and companies by leading speaker outreach and event operations.',
