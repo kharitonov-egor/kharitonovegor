@@ -1,7 +1,48 @@
 import { useState } from 'react'
+import { usePostHog } from 'posthog-js/react'
 // import { experience } from './data/Experience'
 // import { leadership } from './data/Leadership'
 import me from './assets/me.png'
+
+type Social = {
+  event: string
+  domId: string
+  label: string
+  href: string
+}
+
+const socials: Social[] = [
+  {
+    event: 'github_click',
+    domId: 'GithubClick',
+    label: 'Github',
+    href: 'https://github.com/kharitonov-egor',
+  },
+  {
+    event: 'linkedin_click',
+    domId: 'LinkedinClick',
+    label: 'LinkedIn',
+    href: 'https://www.linkedin.com/in/kharitonov-egor/',
+  },
+  {
+    event: 'email_click',
+    domId: 'EmailClick',
+    label: 'Email',
+    href: 'mailto:egakhar@gmail.com',
+  },
+  {
+    event: 'telegram_click',
+    domId: 'TelegramClick',
+    label: 'Telegram',
+    href: 'https://t.me/kharitonov_egor',
+  },
+  {
+    event: 'call_click',
+    domId: 'CalClick',
+    label: 'Book a call',
+    href: 'https://cal.com/egor-kharitonov-j6h556/30min',
+  },
+]
 
 type Item = {
   title: string
@@ -77,45 +118,38 @@ function Row({ item }: { item: Item }) {
 }
 
 export default function Home() {
+  const posthog = usePostHog()
+
   return (
-    <div className="flex min-h-full w-full flex-col items-center mt-16">
-      <div className="grid justify-items-center gap-5 text-center">
+    <div className="flex w-full flex-col items-center">
+      <div className="relative grid justify-items-center gap-2 text-center">
 
         <img
           src={me}
           alt="Egor Kharitonov"
-          className="w-[150px] rounded-3xl border-2 border-white/80 shadow-md mb-2"
+          className="absolute bottom-full left-1/2 mb-6 w-[150px] -translate-x-1/2 rounded-3xl border-2 border-white/80 shadow-md"
         />
 
-        <div className="grid gap-2">
-          <h1 className="text-3xl font-bold text-white">
-            Egor Kharitonov
-          </h1>
-          <h2 className="text-base text-gray-500">
-            Software Engineer
-          </h2>
-        </div>
-      </div>
+        <h1 className="text-3xl font-bold text-white">
+          Egor Kharitonov
+        </h1>
+        <h2 className="text-base text-gray-500">
+          Software Engineer
+        </h2>
 
-      <div>
-        <div className="flex flex-row gap-8 mt-8 text-lg social-icons-container">
-          <a href="https://github.com/kharitonov-egor" target="_blank" id="GithubClick" className='hover:underline'>
-            Github
-          </a>
-          <a
-            href="https://www.linkedin.com/in/kharitonov-egor/"
-            target="_blank"
-            id="LinkedinClick"
-            className='hover:underline'
-          >
-            LinkedIn
-          </a>
-          <a href="mailto:egakhar@gmail.com" target="_blank" id="EmailClick" className='hover:underline'>
-            Email
-          </a>
-          <a href="https://t.me/kharitonov_egor" target="_blank" id="TelegramClick" className='hover:underline'>
-            Telegram
-          </a>
+        <div className="absolute left-1/2 top-full mt-8 flex w-max max-w-[90vw] -translate-x-1/2 flex-row flex-wrap justify-center gap-x-8 gap-y-3 text-lg social-icons-container">
+          {socials.map(({ event, domId, label, href }) => (
+            <a
+              key={event}
+              href={href}
+              target="_blank"
+              id={domId}
+              className='hover:underline'
+              onClick={() => posthog?.capture(event)}
+            >
+              {label}
+            </a>
+          ))}
         </div>
       </div>
 
