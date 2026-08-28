@@ -40,7 +40,7 @@ const socials: Social[] = [
     event: 'call_click',
     domId: 'CalClick',
     label: 'Book a call',
-    href: 'https://cal.com/egor-kharitonov-j6h556/30min',
+    href: 'https://cal.com/egor-kharitonov-j6h556',
   },
 ]
 
