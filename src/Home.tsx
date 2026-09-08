@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { usePostHog } from 'posthog-js/react'
 // import { experience } from './data/Experience'
 // import { leadership } from './data/Leadership'
-import me from './assets/me.png'
+import me from './assets/me.webp'
 
 type Social = {
   event: string
