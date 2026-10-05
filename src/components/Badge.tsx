@@ -249,7 +249,6 @@ export default function Badge() {
             draggable={false}
             className="aspect-square w-full rounded-xl object-cover"
           />
-          <p className="mt-3.5 text-[17px] font-semibold leading-tight text-fg">{l(profile.name)}</p>
           <div
             aria-hidden="true"
             className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-300 group-hover/card:opacity-100"
